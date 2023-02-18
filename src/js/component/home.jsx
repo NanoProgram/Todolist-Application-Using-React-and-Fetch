@@ -1,35 +1,43 @@
 import React from "react";
 import { useEffect, useState } from "react";
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Mynerve&family=Roboto+Mono:ital,wght@1,100&display=swap');
+</style>
 
 
 
-let count = 0
+
+
+
 
 //create your first component
 const Home = () => {
-	const[tasks, setTasks] = useState([])
+	const[tasks, setTasks] = useState([]);
+	const [count, setCount] = useState(0);
 	const newTask = (e) => {
 		if(e.key === 'Enter'){
 		setTasks (prev => [...prev, e.target.value])
-		count++
+		setCount((prev) => prev + 1)
 		}
 	}
-	const tag = Object.keys(tasks);
-	console.log(tag)
-	const deleteTask = () => {
-		setTasks(tasks.filter((tasks) => tasks !== tasks));
+	const deleteTask = (task) => {
+		setTasks((prev) => prev.filter((t) => t !== task));
+		setCount((prev) => prev - 1);
 	}
 
   return (
-    <div id="container" class="container container fluid">
-      <h1>Todo List</h1>
-      <input id="input" type="text" placeholder="Add Task ..." onKeyDown={e => newTask(e)} />
-	  {tasks.map((tasks, index) => {
-		return <h1 key={index} value={tasks}>{tasks}<button  type="button" class="btn-close" aria-label="Close" onClick={()=> deleteTask(tasks)}></button></h1>
+	<div class="image-back">
+    <div id="container" class="container-fluid post-it">
+      <div class="try"><h1 class="fontTodo">Todo List</h1>
+      <div id="center"><input id="input" type="text" placeholder="Add Task ..." onKeyDown={e => newTask(e)} /></div>
+	  {tasks.map((task, index) => {
+		return <h3 key={index} value={task} class="fontTask">{task}<button  type="button" class="btn-close" aria-label="Close" onClick={()=> deleteTask(task)}></button></h3>
 	  })
 	  }
-	  <h2>"Task: " {count<1? "No" : count}</h2>
+	  <h6 id="count">"Tasks to complete: " {count<1? "No pending tasks" : count}</h6>
+	  </div>
     </div>
+	</div>
   );
 };
 
