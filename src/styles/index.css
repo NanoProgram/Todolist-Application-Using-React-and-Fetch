@@ -32,6 +32,7 @@ color: rgb(131, 100, 63);
     text-align: center;
     margin: 30px;
     background-color: yellow;
+    border-radius: 20px;
     }
 
 #count {
@@ -71,5 +72,11 @@ color: rgb(131, 100, 63);
 .try {
     margin-top: 310px;
     margin-left: 350px ;
-    width: 500px;
+    width: 450px;
+}
+
+.xs {
+    height: 1px;
+    width: 1px;
+    margin-right: 10px;
 }
