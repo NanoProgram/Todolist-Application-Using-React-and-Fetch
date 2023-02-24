@@ -14,6 +14,9 @@ import { useEffect, useState } from "react";
 const Home = () => {
 	const[tasks, setTasks] = useState([]);
 	const [count, setCount] = useState(0);
+
+	
+
 	const newTask = (e) => {
 		if(e.key === 'Enter'){
 		setTasks (prev => [...prev, e.target.value])
@@ -24,6 +27,28 @@ const Home = () => {
 		setTasks((prev) => prev.filter((t) => t !== task));
 		setCount((prev) => prev - 1);
 	}
+
+	useEffect(() => {
+		async function fetchData() {
+		  try {
+			const response = await fetch(
+			  "https://assets.breatheco.de/apis/fake/todos/user/nano",
+			  {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json"
+				  },
+			  }
+			);
+			const data = await response.json();
+			console.log(data);
+			setTasks(data.map((task => task.label)));
+		  } catch (error) {
+			console.error(error);
+		  }
+		}
+		fetchData();
+	  }, []);
 
   return (
 	<div class="image-back">
