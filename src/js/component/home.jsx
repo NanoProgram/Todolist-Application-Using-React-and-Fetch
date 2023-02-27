@@ -19,8 +19,13 @@ const Home = () => {
 
 	const newTask = (e) => {
 		if(e.key === 'Enter'){
-		setTasks (prev => [...prev, e.target.value])
+		const newTask = {
+			label: e.target.value,
+			done: false,
+		};
+		setTasks (prev => [...prev, newTask])
 		setCount((prev) => prev + 1)
+		console.log(tasks)
 		}
 	}
 	const deleteTask = (task) => {
@@ -42,7 +47,7 @@ const Home = () => {
 			);
 			const data = await response.json();
 			console.log(data);
-			setTasks(data.map((task => task.label)));
+			setTasks(data);
 		  } catch (error) {
 			console.error(error);
 		  }
@@ -56,7 +61,7 @@ const Home = () => {
       <div class="try"><h1 class="fontTodo">Todo List</h1>
       <div id="center"><input id="input" type="text" placeholder="Add Task ..." onKeyDown={e => newTask(e)} /></div>
 	  {tasks.map((task, index) => {
-		return <h3 key={index} value={task} class="fontTask position-relative">{task}<button  type="button" class="btn-close xs position-absolute top-50 end-0 translate-middle-y" aria-label="Close" onClick={()=> deleteTask(task)}></button></h3>
+		return <h3 key={index} value={task} class="fontTask position-relative">{task.label}<button  type="button" class="btn-close xs position-absolute top-50 end-0 translate-middle-y" aria-label="Close" onClick={()=> deleteTask(task)}></button></h3>
 	  })
 	  }
 	  <h6 id="count">"Tasks to complete: " {count<1? "No pending tasks" : count}</h6>
