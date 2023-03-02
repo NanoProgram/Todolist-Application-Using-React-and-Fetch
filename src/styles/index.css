@@ -80,3 +80,10 @@ color: rgb(131, 100, 63);
     width: 1px;
     margin-right: 10px;
 }
+
+.bt {
+    height: 50px;
+    width: 50px;
+    margin-left: 20px;
+    border: 0;
+}
