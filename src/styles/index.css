@@ -15,11 +15,6 @@
     height: 600px;
 }
 
-#input {
-    width: 400px;
-    height: 50px;
-}
-
 .fontTodo {
 font-family: 'Roboto Mono', monospace;
 text-align: center;
@@ -93,4 +88,8 @@ color: rgb(131, 100, 63);
     width: 60px;
     margin-left: 20px;
     border: 0;
+}
+
+.modalBody {
+    height: 80px;
 }
