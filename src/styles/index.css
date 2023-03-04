@@ -93,3 +93,26 @@ color: rgb(131, 100, 63);
 .modalBody {
     height: 80px;
 }
+
+.blackboard {
+    margin-top: 50px;
+    margin-right: 1550px ;
+    width: 250px;
+    height: 550px;
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 10px;
+    font-family: 'Mynerve', cursive;
+    font-size: 30px;
+}
+
+.guidetext {
+    text-align: justify;
+    margin-left: 10px;
+}
+
+.click {
+    text-align: center;
+}
